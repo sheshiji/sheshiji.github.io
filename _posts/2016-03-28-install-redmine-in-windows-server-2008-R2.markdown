@@ -5,7 +5,7 @@ title:  "在Windows Server 2008 R2系统上安装Redmine"
 tags: [工具]
 summary: ""
 ---
-###准备工作
+### 准备工作
 
 ①系统：
 
@@ -23,7 +23,7 @@ dotNetFx40_Full_x86_x64.exe
 redmine-3.1.3
 ```
 
-###安装
+### 安装
 
 注意：以管理员身份安装软件。
 
@@ -103,7 +103,7 @@ ruby bin/rails server thin -e production
 ruby bin/rails server thin -e production -p 3001
 ```
 
-###配置邮箱
+### 配置邮箱
 
 参考地址：[http://www.cnblogs.com/cs_net/p/5020813.html](http://www.cnblogs.com/cs_net/p/5020813.html)
 
@@ -136,7 +136,7 @@ email_delivery:
 
 保存设置，再点右下角的"发送测试邮件"按键即可。
 
-###配置局域网
+### 配置局域网
 
 ①防火墙打开3000端口，具体参考[http://www.veryhuo.com/a/view/48280.html](http://www.veryhuo.com/a/view/48280.html)。
 

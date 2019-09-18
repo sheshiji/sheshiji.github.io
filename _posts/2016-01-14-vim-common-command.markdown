@@ -5,7 +5,7 @@ title:  "VIM常用命令"
 tags: [工具]
 summary: ""
 ---
-###插入模式
+### 插入模式
 
 ```
 i	= insert mode at cursor
@@ -17,7 +17,7 @@ O	= open blank line above current line
 Esc	= exit insert mode
 ```
 
-###光标移动
+### 光标移动
 
 ```
 h,j,k,l = ←, ↓, ↑, →
@@ -41,7 +41,7 @@ G	= 跳到最后一行
 #	= 向上查找当前光标所在位置的字符串
 ```
 
-###编辑
+### 编辑
 
 ```
 ctrl+r	= redo
@@ -52,7 +52,7 @@ u	= undo
 ==	= auto-indent current line
 ```
 
-###剪切与粘贴
+### 剪切与粘贴
 
 ```
 dd	= 删除当前行，并把删除的行存到剪贴板里
@@ -68,7 +68,7 @@ p	= 在光标位置之后粘贴
 P	= 在光标位置之前粘贴
 ```
 
-###查找
+### 查找
 
 ```
 /pattern = search for pattern
@@ -77,7 +77,7 @@ n	= repeat search in same direction
 N	= repeat search in opposite direction
 ```
 
-###退出
+### 退出
 
 ```
 :w	= 保存
