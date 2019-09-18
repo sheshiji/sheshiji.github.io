@@ -10,6 +10,6 @@ title: "归档：Archives"
 	{% if year != nyear %} 
     <h2>{{ post.date | date: '%Y' }}</h2> {% endif %} 
 	{% endunless %} 
-    <li><span>{{ post.date | date: "%Y-%m-%d" }}</span>&raquo;<a href="{{ post.url }}">{{ post.title }}</a></li> 
+    <li><span>{{ post.date | date: "%Y-%m-%d" }}</span> <a href="{{ post.url }}">{{ post.title }}</a></li> 
 	{% endfor %} 
 </ul> 
