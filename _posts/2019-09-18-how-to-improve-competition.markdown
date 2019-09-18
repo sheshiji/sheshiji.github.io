@@ -5,4 +5,4 @@ title:  "如何选择软件工具以提高竞争力"
 tags: [工具]
 summary: ""
 ---
-![](https://github.com/sheshiji/sheshiji.github.io/blob/master/images/opensource.png)
+![](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/opensource.png)
