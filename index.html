@@ -10,7 +10,6 @@ title: "首页：Home"
 <!-- Loop output paged posts -->
 {% for post in paginator.posts %}
   <div class="post-date">
-	<span class="glyphicon glyphicon-time"></span>
 	{{ post.date | date_to_string }}
   </div>
   <a href="{{ post.url }}">
