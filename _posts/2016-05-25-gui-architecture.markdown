@@ -6,6 +6,7 @@ tags: [架构]
 summary: ""
 ---
 原文地址：[https://www.oschina.net/translate/gui-architectures?lang=chs&page=1#](https://www.oschina.net/translate/gui-architectures?lang=chs&page=1#)
+
 英文地址：[http://martinfowler.com/eaaDev/uiArchs.html](http://martinfowler.com/eaaDev/uiArchs.html)
 
 无论是对于用户还是对于开发者而言，图形用户界面早已成为软件领域中人们习以为常的部分了。从设计角度看，GUI代表着系统设计中一组特殊的问题 —— 这些问题具有大量不同但却又有些相似的解决方案。 
