@@ -26,7 +26,7 @@ summary: ""
 
 为了对包括这个架构在内的所有架构进行探讨，我将使用一个共同的例子。在我所居住的新英格兰，有一个用于监测空气中冰激凌微粒数量的政府项目。如果冰激凌微粒的浓度太低，就表明我们吃的冰激凌不够多，这对我们的经济以及公共秩序而言是一种严重的风险因素。（我所喜欢使用的例子同你通常在此类技术书中看到的例子相比来说会更加真实。**译者注：这恐怕是作者在开玩笑**）
   
-![image](http://static.oschina.net/uploads/img/201307/08152218_0Tvw.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_01.gif)
 
 图1：本例所使用的UI
 
@@ -62,13 +62,13 @@ summary: ""
 
 下面假设在数据绑定功能情况下，让我们详细看看对实际数值的编辑过程。表单对象保存了一个直接指向通用控件的应用，而且为屏幕上的每个控件都保存了一个这样的引用，但是，这里我所关心的只是实际字段、 变化字段以及目标字段。 
 
-![image](http://static.oschina.net/uploads/img/201307/08152219_qOX7.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_02.gif)
 
 图2：表单和控件的类图 
 
 文本域为文本的改变声明了一个事件，当表单在初始化期间组装屏幕时，它自身领取了那个事件，将一个方法绑定到其自身的——这里是一个actual_textChanged（实际值文本变更）。 
 
-![image](http://static.oschina.net/uploads/img/201307/08152219_yjil.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_03.gif)
 
 图3：使用表单和控件改变样式（genre）的序列图 
 
@@ -101,19 +101,19 @@ MVC的展现部分由两个主要的元素组成：视图（view）和控制器�
 
 在这一点上我应该要强调的是不仅仅只有一个视图和控制器，对于屏幕上面的每一个元素，你都应该有一个视图-控制器对，每一个控件和屏幕是一个整体。因此对于用户输入响应的首要部分是不同控制器协作，来看谁获取获得了编辑。在事实上是文本域的时候，文本域控制器会来处理接下来将会发生什么。 
 
-![image](http://static.oschina.net/uploads/img/201307/08152220_aOXF.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_04.gif)
 
 图4：模型、视图和控制器之间的必要依赖。（我称这为必要的，是因为事实上视图和控制互相之间是直接链接起来的，但是开发者大多数都不适用这个事实。） 
 
 像后来的环境中，Smalltalk算准了你想要能够被服用的通用UI组件。在这种情况下组件应该会是视图-控制器对。都是通用的类，因此需要插入到应用程序特定的行为中去。应该要有一个可以代表整个屏幕和定义低级控制布局的评估视图（assessment view），那样子就同表单和控件中的表单类似了。然而不同于表单，MVC在低级组件的评估控件（assessment controller）上没有时间处理器（event handler）。 
 
-![image](http://static.oschina.net/uploads/img/201307/08152220_EVYy.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_05.gif)
 
 图5：一个ice-cream模拟器展示的一种MVC版本的类图 
 
 文本域的配置来自给其赋予的指向其模型的链接，当文本发生改变是，读取，并且告诉它什么方法应该被调用。这里是设置成了'#actual'：当屏幕已经被初始化时（在Smallta中，打头的‘#’声明一个符号（sysbol），或者是内部的字符串（interned string））。然后文本域的控制器就会回调那个方法以做出改变。重要的是这同数据绑定（Data Binding）所发生的状况是同一种机制，控件被链接到底层的对象（行），并被告知它所操作的方法（列）。 
 
-![image](http://static.oschina.net/uploads/img/201307/08152221_oKlF.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_06.gif)
 
 图6：改变MVC的实际值 
 
@@ -141,13 +141,13 @@ MVC的展现部分由两个主要的元素组成：视图（view）和控制器�
 
 我优先选的方法是构建一个新类型的UI控件。实质上我们需要的是这样的UI控件：它向域请求定性的值，把这个值与某些值和色彩的内部表相比较，然后以此来设置字体颜色。向域对象请求的表和消息在评估视图形成的时候将由评估视图自身去设置，同时它也为监控这个域而设置了外观。如果我们能够仅仅增加其他行为而很容易的子类化文本域，那么这种方法就运行的非常良好。这明显地取决于设计的组件启用子类化的程度-Smalltalk让这种方法变得非常简单-其他环境则让这中方法变得更加困难。
 
-![image](http://static.oschina.net/uploads/img/201307/08152222_RZPJ.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_07.gif)
 
 图7：使用了文本域的可配置为决定色彩的特殊子类
 
 最后的路线就是产生一种新的模型对象，它是面向于围绕屏幕的，但仍然是独立于部件。它应该是在屏幕上的模型。同那些在读取对象上的一样的方法，应该只是被委派于读取逻辑，但是它也会添加方法来支持只和UI相关的行为，比如文本的颜色。 
 
-![image](http://static.oschina.net/uploads/img/201307/08152223_aCDm.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_08.gif)
 
 图8：使用中间展示模型（Presentation Model）来处理视图逻辑。 
 
@@ -189,7 +189,8 @@ adaptor onChangeSend: #redisplay to: self
 ```
 
 让我们看看应用模式是如何适应我们正在运行的例子。 
-![image](http://static.oschina.net/uploads/img/201307/08152224_1Jz8.gif)
+
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_09.gif)
 
 图9:正在运行的例子里的visual works应用模型的类图 
 
@@ -197,7 +198,7 @@ adaptor onChangeSend: #redisplay to: self
 
 但你在一个UI设计器里面组装UI时,你会在那个设计器里设置每一个部件的切面(aspect).切面负责返回属性对象的应用程序模型上的方法. 
 
-![image](http://static.oschina.net/uploads/img/201307/08152224_xCkG.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_10.gif)
 
 图10:展示实际值的更新怎样去更新方差文本(variance text)的序列图
 
@@ -211,7 +212,7 @@ adaptor onChangeSend: #redisplay to: self
 
 然而，所有这些都有一个限制，那就是对于更加复杂的行为，你需要去构建特殊的部件和属性对象。例如所提供的对象的设置并没有提供文本颜色的变化同变化的程度，这两者联系起来的方法。应用程序和领域模型的分离确实允许我们去分辨使用正确方式作出的决定，但是随后使用观察者切面适配器的部件我们还是需要去创建一些新的类。这常常意味着太多了工作，因此我们可以通过允许应用程序模型直接访问部件来使得这种事情变得更加容易，像图11所示： 
 
-![image](http://static.oschina.net/uploads/img/201307/08152225_LSGt.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_11.gif)
 
 图11：应用程序模型直接通过操作部件来更新颜色 
 
@@ -255,7 +256,7 @@ MVC中思维的差异之一是对于展示器控制视图中部件的程度。�
 
 MVP展示器和MVC控制器之间有着明显的相似之处，而展示器是MVC控制器的一种宽松形式。由于许多设计将会随MVP之流，而把‘控制器’作为展示器的一个代名词。在我们谈论处理用户输入的时候使用控制器就有了合理的说法。 
 
-![image](http://static.oschina.net/uploads/img/201307/08152226_OX8L.gif)
+![image](https://raw.githubusercontent.com/sheshiji/sheshiji.github.io/master/images/gui_architecture_12.gif)
 
 图12：MVP实际读取更新的序列图
 
